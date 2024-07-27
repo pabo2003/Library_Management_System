@@ -1,0 +1,379 @@
+<html>
+<head>
+<title>CustomerFormController.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #0033b3;}
+.s1 { color: #080808;}
+.s2 { color: #067d17;}
+.s3 { color: #1750eb;}
+.s4 { color: #8c8c8c; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+CustomerFormController.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">lk.ijse.gdse.Controller;</span>
+
+<span class="s0">import </span><span class="s1">javafx.collections.FXCollections;</span>
+<span class="s0">import </span><span class="s1">javafx.collections.ObservableList;</span>
+<span class="s0">import </span><span class="s1">com.jfoenix.controls.JFXButton;</span>
+<span class="s0">import </span><span class="s1">javafx.event.ActionEvent;</span>
+<span class="s0">import </span><span class="s1">javafx.fxml.FXML;</span>
+<span class="s0">import </span><span class="s1">javafx.fxml.FXMLLoader;</span>
+<span class="s0">import </span><span class="s1">javafx.scene.Scene;</span>
+<span class="s0">import </span><span class="s1">javafx.scene.control.Alert;</span>
+<span class="s0">import </span><span class="s1">javafx.scene.control.TableColumn;</span>
+<span class="s0">import </span><span class="s1">javafx.scene.control.TableView;</span>
+<span class="s0">import </span><span class="s1">javafx.scene.control.TextField;</span>
+<span class="s0">import </span><span class="s1">javafx.scene.control.cell.PropertyValueFactory;</span>
+<span class="s0">import </span><span class="s1">javafx.scene.layout.AnchorPane;</span>
+<span class="s0">import </span><span class="s1">javafx.stage.Stage;</span>
+<span class="s0">import </span><span class="s1">lk.ijse.gdse.BO.BOFactory;</span>
+<span class="s0">import </span><span class="s1">lk.ijse.gdse.BO.MemberBO;</span>
+<span class="s0">import </span><span class="s1">lk.ijse.gdse.DTO.MembersDTO;</span>
+<span class="s0">import </span><span class="s1">lk.ijse.gdse.Entity.Members;</span>
+<span class="s0">import </span><span class="s1">javafx.scene.input.KeyCode;</span>
+
+<span class="s0">import </span><span class="s1">java.text.ParseException;</span>
+<span class="s0">import </span><span class="s1">java.text.SimpleDateFormat;</span>
+<span class="s0">import </span><span class="s1">java.io.IOException;</span>
+<span class="s0">import </span><span class="s1">java.sql.SQLException;</span>
+<span class="s0">import </span><span class="s1">java.util.Date;</span>
+<span class="s0">import </span><span class="s1">java.util.List;</span>
+
+    <span class="s0">public class </span><span class="s1">CustomerFormController {</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">JFXButton btnClear;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">JFXButton btnDashboard;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">JFXButton btnDelete;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">JFXButton btnSave;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">JFXButton btnUpdate;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">TableColumn&lt;?, ?&gt; colAddress;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">TableColumn&lt;?, ?&gt; colDateofBirth;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">TableColumn&lt;?, ?&gt; colEmail;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">TableColumn&lt;?, ?&gt; colId;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">TableColumn&lt;?, ?&gt; colJoinDate;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">TableColumn&lt;?, ?&gt; colName;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">TableColumn&lt;?, ?&gt; colTel;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">TableColumn&lt;?, ?&gt; colType;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">AnchorPane root;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">TableView&lt;Members&gt; tblMembers;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">TextField txtAddress;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">TextField txtDateOfBirth;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">TextField txtEmail;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">TextField txtId;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">TextField txtJoinDate;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">TextField txtName;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">TextField txtTel;</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">private </span><span class="s1">TextField txtType;</span>
+        <span class="s1">MemberBO memberBO  = (MemberBO) BOFactory.getBoFactory().getBO(BOFactory.BOType.MEMBER);</span>
+
+        <span class="s0">public void </span><span class="s1">txtSearchOnAction(ActionEvent actionEvent) </span><span class="s0">throws </span><span class="s1">SQLException, SQLException {</span>
+            <span class="s1">String tel = txtId.getText();</span>
+
+            <span class="s1">Members members = memberBO.searchByTel(tel);</span>
+
+            <span class="s0">if </span><span class="s1">(members != </span><span class="s0">null</span><span class="s1">) {</span>
+                <span class="s1">txtId.setText(String.valueOf(members.getMemberId()));</span>
+                <span class="s1">txtName.setText(members.getName());</span>
+                <span class="s1">txtEmail.setText(members.getEmail());</span>
+                <span class="s1">txtTel.setText(members.getPhoneNumber());</span>
+                <span class="s1">txtAddress.setText(members.getAddress());</span>
+                <span class="s1">txtDateOfBirth.setText(String.valueOf(members.getDateOfBirth()));</span>
+                <span class="s1">txtJoinDate.setText(String.valueOf(members.getJoinDate()));</span>
+                <span class="s1">txtType.setText(members.getMembershipType());</span>
+            <span class="s1">}</span><span class="s0">else </span><span class="s1">{</span>
+                <span class="s0">new </span><span class="s1">Alert(Alert.AlertType.INFORMATION,</span><span class="s2">&quot;CustomerDTO is not found!&quot;</span><span class="s1">);</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s0">public void </span><span class="s1">initialize(){</span>
+            <span class="s1">setCellValueFactory();</span>
+            <span class="s1">loadAllMembers();</span>
+            <span class="s1">getCurrentMemberId();</span>
+
+            <span class="s1">txtId.setOnKeyPressed(event -&gt; {</span>
+                <span class="s0">if </span><span class="s1">(event.getCode() == KeyCode.ENTER) {</span>
+                    <span class="s1">txtName.requestFocus();</span>
+                <span class="s1">}</span>
+            <span class="s1">});</span>
+
+            <span class="s1">txtName.setOnKeyPressed(event -&gt; {</span>
+                <span class="s0">if </span><span class="s1">(event.getCode() == KeyCode.ENTER) {</span>
+                    <span class="s1">txtEmail.requestFocus();</span>
+                <span class="s1">}</span>
+            <span class="s1">});</span>
+
+            <span class="s1">txtEmail.setOnKeyPressed(event -&gt; {</span>
+                <span class="s0">if </span><span class="s1">(event.getCode() == KeyCode.ENTER) {</span>
+                    <span class="s1">txtTel.requestFocus();</span>
+                <span class="s1">}</span>
+            <span class="s1">});</span>
+            <span class="s1">txtTel.setOnKeyPressed(event -&gt; {</span>
+                <span class="s0">if </span><span class="s1">(event.getCode() == KeyCode.ENTER) {</span>
+                    <span class="s1">txtAddress.requestFocus();</span>
+                <span class="s1">}</span>
+            <span class="s1">});</span>
+            <span class="s1">txtAddress.setOnKeyPressed(event -&gt; {</span>
+                <span class="s0">if </span><span class="s1">(event.getCode() == KeyCode.ENTER) {</span>
+                    <span class="s1">txtDateOfBirth.requestFocus();</span>
+                <span class="s1">}</span>
+            <span class="s1">});</span>
+            <span class="s1">txtDateOfBirth.setOnKeyPressed(event -&gt; {</span>
+                <span class="s0">if </span><span class="s1">(event.getCode() == KeyCode.ENTER) {</span>
+                    <span class="s1">txtJoinDate.requestFocus();</span>
+                <span class="s1">}</span>
+            <span class="s1">});</span>
+            <span class="s1">txtJoinDate.setOnKeyPressed(event -&gt; {</span>
+                <span class="s0">if </span><span class="s1">(event.getCode() == KeyCode.ENTER) {</span>
+                    <span class="s1">txtType.requestFocus();</span>
+                <span class="s1">}</span>
+            <span class="s1">});</span>
+
+            <span class="s1">tblMembers.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -&gt; {</span>
+                <span class="s0">if </span><span class="s1">(newSelection != </span><span class="s0">null</span><span class="s1">) {</span>
+                    <span class="s1">txtId.setText(String.valueOf(newSelection.getMemberId()));</span>
+                    <span class="s1">txtName.setText(newSelection.getName());</span>
+                    <span class="s1">txtEmail.setText(newSelection.getEmail());</span>
+                    <span class="s1">txtTel.setText(newSelection.getPhoneNumber());</span>
+                    <span class="s1">txtAddress.setText(newSelection.getAddress());</span>
+                    <span class="s1">txtDateOfBirth.setText(String.valueOf(newSelection.getDateOfBirth()));</span>
+                    <span class="s1">txtJoinDate.setText(String.valueOf(newSelection.getJoinDate()));</span>
+                    <span class="s1">txtType.setText(newSelection.getMembershipType());</span>
+                <span class="s1">}</span>
+            <span class="s1">});</span>
+        <span class="s1">}</span>
+
+        <span class="s0">private void </span><span class="s1">getCurrentMemberId() {</span>
+            <span class="s0">try </span><span class="s1">{</span>
+                <span class="s0">int </span><span class="s1">currentId = Integer.parseInt(memberBO.getCurrentId());</span>
+                <span class="s0">int </span><span class="s1">nextMemberId = generateNextOrderId(currentId);</span>
+                <span class="s1">System.out.println(nextMemberId);</span>
+                <span class="s1">txtId.setText(String.valueOf(nextMemberId));</span>
+
+            <span class="s1">} </span><span class="s0">catch </span><span class="s1">(SQLException e) {</span>
+                <span class="s0">throw new </span><span class="s1">RuntimeException(e);</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s0">private int </span><span class="s1">generateNextOrderId(</span><span class="s0">int </span><span class="s1">currentId) {</span>
+            <span class="s0">if </span><span class="s1">(currentId != </span><span class="s3">0</span><span class="s1">) {</span>
+                <span class="s0">int </span><span class="s1">idNum = (currentId) + </span><span class="s3">1</span><span class="s1">;</span>
+                <span class="s0">return </span><span class="s1">idNum;</span>
+            <span class="s1">}</span>
+            <span class="s0">return </span><span class="s3">001</span><span class="s1">;</span>
+        <span class="s1">}</span>
+
+        <span class="s0">private void </span><span class="s1">loadAllMembers() {</span>
+            <span class="s1">ObservableList&lt;Members&gt; objList = FXCollections.observableArrayList();</span>
+            <span class="s0">try </span><span class="s1">{</span>
+                <span class="s1">List&lt;MembersDTO&gt; memberList = memberBO.getAll();</span>
+                <span class="s0">for </span><span class="s1">(MembersDTO membersDTO : memberList) {</span>
+                    <span class="s1">Members members = </span><span class="s0">new </span><span class="s1">Members(</span>
+                            <span class="s1">membersDTO.getMember_id(),</span>
+                            <span class="s1">membersDTO.getName(),</span>
+                            <span class="s1">membersDTO.getEmail(),</span>
+                            <span class="s1">membersDTO.getPhone_number(),</span>
+                            <span class="s1">membersDTO.getAddress(),</span>
+                            <span class="s1">membersDTO.getDate_of_birth(),</span>
+                            <span class="s1">membersDTO.getJoin_date(),</span>
+                            <span class="s1">membersDTO.getMembership_type()</span>
+                    <span class="s1">);</span>
+                    <span class="s1">objList.add(members);</span>
+                <span class="s1">}</span>
+                <span class="s1">tblMembers.setItems(objList);</span>
+            <span class="s1">}</span><span class="s0">catch </span><span class="s1">(SQLException e){</span>
+                <span class="s0">throw new </span><span class="s1">RuntimeException(e);</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s0">private void </span><span class="s1">setCellValueFactory() {</span>
+            <span class="s0">this</span><span class="s1">.colId.setCellValueFactory(</span><span class="s0">new </span><span class="s1">PropertyValueFactory&lt;&gt;(</span><span class="s2">&quot;memberId&quot;</span><span class="s1">));</span>
+            <span class="s0">this</span><span class="s1">.colName.setCellValueFactory(</span><span class="s0">new </span><span class="s1">PropertyValueFactory&lt;&gt;(</span><span class="s2">&quot;name&quot;</span><span class="s1">));</span>
+            <span class="s0">this</span><span class="s1">.colEmail.setCellValueFactory(</span><span class="s0">new </span><span class="s1">PropertyValueFactory&lt;&gt;(</span><span class="s2">&quot;email&quot;</span><span class="s1">));</span>
+            <span class="s0">this</span><span class="s1">.colTel.setCellValueFactory(</span><span class="s0">new </span><span class="s1">PropertyValueFactory&lt;&gt;(</span><span class="s2">&quot;phoneNumber&quot;</span><span class="s1">));</span>
+            <span class="s0">this</span><span class="s1">.colAddress.setCellValueFactory(</span><span class="s0">new </span><span class="s1">PropertyValueFactory&lt;&gt;(</span><span class="s2">&quot;address&quot;</span><span class="s1">));</span>
+            <span class="s0">this</span><span class="s1">.colDateofBirth.setCellValueFactory(</span><span class="s0">new </span><span class="s1">PropertyValueFactory&lt;&gt;(</span><span class="s2">&quot;dateOfBirth&quot;</span><span class="s1">));</span>
+            <span class="s0">this</span><span class="s1">.colJoinDate.setCellValueFactory(</span><span class="s0">new </span><span class="s1">PropertyValueFactory&lt;&gt;(</span><span class="s2">&quot;joinDate&quot;</span><span class="s1">));</span>
+            <span class="s0">this</span><span class="s1">.colType.setCellValueFactory(</span><span class="s0">new </span><span class="s1">PropertyValueFactory&lt;&gt;(</span><span class="s2">&quot;membershipType&quot;</span><span class="s1">));</span>
+        <span class="s1">}</span>
+        <span class="s1">@FXML</span>
+        <span class="s0">void </span><span class="s1">btnClearOnAction(ActionEvent event) {</span>
+            <span class="s1">clearFields();</span>
+        <span class="s1">}</span>
+
+        <span class="s0">private void </span><span class="s1">clearFields() {</span>
+            <span class="s1">txtName.clear();</span>
+            <span class="s1">txtEmail.clear();</span>
+            <span class="s1">txtTel.clear();</span>
+            <span class="s1">txtAddress.clear();</span>
+            <span class="s1">txtDateOfBirth.clear();</span>
+            <span class="s1">txtJoinDate.clear();</span>
+            <span class="s1">txtTel.clear();</span>
+        <span class="s1">}</span>
+        <span class="s1">@FXML</span>
+        <span class="s0">void </span><span class="s1">btnDashBoardOnAction(ActionEvent event) {</span>
+            <span class="s0">try </span><span class="s1">{</span>
+                <span class="s1">AnchorPane rootNode = FXMLLoader.load(getClass().getResource(</span><span class="s2">&quot;/resources/view/dashboard_form.fxml&quot;</span><span class="s1">));</span>
+                <span class="s1">Stage stage = (Stage) root.getScene().getWindow();</span>
+                <span class="s1">stage.setScene(</span><span class="s0">new </span><span class="s1">Scene(rootNode));</span>
+                <span class="s1">stage.setTitle(</span><span class="s2">&quot;Dashboard Form&quot;</span><span class="s1">);</span>
+                <span class="s1">stage.centerOnScreen();</span>
+            <span class="s1">} </span><span class="s0">catch </span><span class="s1">(IOException e) {</span>
+                <span class="s1">e.printStackTrace();</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">void </span><span class="s1">btnDeleteOnAction(ActionEvent event) {</span>
+            <span class="s1">String id = txtId.getText();</span>
+
+            <span class="s0">try </span><span class="s1">{</span>
+                <span class="s0">boolean </span><span class="s1">isDeleted = memberBO.delete(Integer.parseInt(id));</span>
+                <span class="s0">if </span><span class="s1">(isDeleted) {</span>
+                    <span class="s0">new </span><span class="s1">Alert(Alert.AlertType.CONFIRMATION,</span><span class="s2">&quot;Member Deleted!&quot;</span><span class="s1">);</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span><span class="s0">catch </span><span class="s1">(SQLException e){</span>
+                <span class="s0">new </span><span class="s1">Alert(Alert.AlertType.ERROR,e.getMessage()).show();</span>
+            <span class="s1">}</span>
+            <span class="s1">loadAllMembers();</span>
+            <span class="s1">clearFields();</span>
+        <span class="s1">}</span>
+
+        <span class="s1">@FXML</span>
+        <span class="s0">void </span><span class="s1">btnSaveOnAction(ActionEvent event) {</span>
+            <span class="s0">int </span><span class="s1">id = Integer.parseInt(txtId.getText());</span>
+            <span class="s1">String name = txtName.getText();</span>
+            <span class="s1">String email = txtEmail.getText();</span>
+            <span class="s1">String phoneNumber = txtTel.getText();</span>
+            <span class="s1">String address = txtAddress.getText();</span>
+            <span class="s1">String dateOfBirthStr = txtDateOfBirth.getText();</span>
+            <span class="s1">String joinDateStr = txtJoinDate.getText();</span>
+            <span class="s1">String membershipType = txtType.getText();</span>
+
+            <span class="s1">SimpleDateFormat dateFormat = </span><span class="s0">new </span><span class="s1">SimpleDateFormat(</span><span class="s2">&quot;yyyy-MM-dd&quot;</span><span class="s1">);</span>
+
+            <span class="s0">try </span><span class="s1">{</span>
+                <span class="s4">// Parse dates</span>
+                <span class="s1">Date dateOfBirth = </span><span class="s0">new </span><span class="s1">Date(dateFormat.parse(dateOfBirthStr).getTime());</span>
+                <span class="s1">Date joinDate = </span><span class="s0">new </span><span class="s1">Date(dateFormat.parse(joinDateStr).getTime());</span>
+
+                <span class="s4">// Create MembersDTO object with Date objects</span>
+                <span class="s1">MembersDTO memberDTO = </span><span class="s0">new </span><span class="s1">MembersDTO(id, name, email, phoneNumber, address, (java.sql.Date) dateOfBirth, (java.sql.Date) joinDate, membershipType);</span>
+
+                <span class="s4">// Perform save operation</span>
+                <span class="s0">boolean </span><span class="s1">isSaved = memberBO.save(memberDTO);</span>
+
+                <span class="s0">if </span><span class="s1">(isSaved) {</span>
+                    <span class="s0">new </span><span class="s1">Alert(Alert.AlertType.CONFIRMATION, </span><span class="s2">&quot;Member saved successfully!&quot;</span><span class="s1">).show();</span>
+                    <span class="s1">clearFields(); </span><span class="s4">// Clear input fields</span>
+                    <span class="s1">loadAllMembers(); </span><span class="s4">// Refresh member list</span>
+                <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                    <span class="s0">new </span><span class="s1">Alert(Alert.AlertType.ERROR, </span><span class="s2">&quot;Failed to save member.&quot;</span><span class="s1">).show();</span>
+                <span class="s1">}</span>
+            <span class="s1">} </span><span class="s0">catch </span><span class="s1">(ParseException e) {</span>
+                <span class="s0">new </span><span class="s1">Alert(Alert.AlertType.ERROR, </span><span class="s2">&quot;Error parsing date. Please enter date in format yyyy-MM-dd.&quot;</span><span class="s1">).show();</span>
+                <span class="s1">e.printStackTrace(); </span><span class="s4">// Log or handle the exception appropriately</span>
+            <span class="s1">} </span><span class="s0">catch </span><span class="s1">(SQLException e) {</span>
+                <span class="s0">new </span><span class="s1">Alert(Alert.AlertType.ERROR, </span><span class="s2">&quot;Database error: &quot; </span><span class="s1">+ e.getMessage()).show();</span>
+                <span class="s1">e.printStackTrace(); </span><span class="s4">// Log or handle the exception appropriately</span>
+            <span class="s1">}</span>
+
+            <span class="s1">clearFields(); </span><span class="s4">// Ensure fields are cleared after the operation</span>
+        <span class="s1">}</span>
+
+
+
+
+        <span class="s1">@FXML</span>
+        <span class="s0">void </span><span class="s1">btnUpdateOnAction(ActionEvent actionEvent) {</span>
+            <span class="s0">int </span><span class="s1">id = Integer.parseInt(txtId.getText());</span>
+            <span class="s1">String name = txtName.getText();</span>
+            <span class="s1">String email = txtEmail.getText();</span>
+            <span class="s1">String phoneNumber = txtTel.getText();</span>
+            <span class="s1">String address = txtAddress.getText();</span>
+            <span class="s1">String dateOfBirthStr = txtDateOfBirth.getText();</span>
+            <span class="s1">String joinDateStr = txtJoinDate.getText();</span>
+            <span class="s1">String membershipType = txtType.getText();</span>
+
+            <span class="s1">SimpleDateFormat dateFormat = </span><span class="s0">new </span><span class="s1">SimpleDateFormat(</span><span class="s2">&quot;yyyy-MM-dd&quot;</span><span class="s1">);</span>
+
+            <span class="s0">try </span><span class="s1">{</span>
+                <span class="s1">Date dateOfBirth = </span><span class="s0">new </span><span class="s1">Date(dateFormat.parse(dateOfBirthStr).getTime());</span>
+                <span class="s1">Date joinDate = </span><span class="s0">new </span><span class="s1">Date(dateFormat.parse(joinDateStr).getTime());</span>
+
+                <span class="s1">MembersDTO memberDTO = </span><span class="s0">new </span><span class="s1">MembersDTO(id, name, email, phoneNumber, address, (java.sql.Date) dateOfBirth, (java.sql.Date) joinDate, membershipType);</span>
+
+                <span class="s0">boolean </span><span class="s1">isSaved = memberBO.update(memberDTO);</span>
+
+                <span class="s0">if </span><span class="s1">(isSaved) {</span>
+                    <span class="s0">new </span><span class="s1">Alert(Alert.AlertType.CONFIRMATION, </span><span class="s2">&quot;Member saved successfully!&quot;</span><span class="s1">).show();</span>
+                    <span class="s1">clearFields(); </span><span class="s4">// Clear input fields</span>
+                    <span class="s1">loadAllMembers(); </span><span class="s4">// Refresh member list</span>
+                <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                    <span class="s0">new </span><span class="s1">Alert(Alert.AlertType.ERROR, </span><span class="s2">&quot;Failed to save member.&quot;</span><span class="s1">).show();</span>
+                <span class="s1">}</span>
+            <span class="s1">} </span><span class="s0">catch </span><span class="s1">(ParseException e) {</span>
+                <span class="s0">new </span><span class="s1">Alert(Alert.AlertType.ERROR, </span><span class="s2">&quot;Error parsing date. Please enter date in format yyyy-MM-dd.&quot;</span><span class="s1">).show();</span>
+                <span class="s1">e.printStackTrace(); </span><span class="s4">// Log or handle the exception appropriately</span>
+            <span class="s1">} </span><span class="s0">catch </span><span class="s1">(SQLException e) {</span>
+                <span class="s0">new </span><span class="s1">Alert(Alert.AlertType.ERROR, </span><span class="s2">&quot;Database error: &quot; </span><span class="s1">+ e.getMessage()).show();</span>
+                <span class="s1">e.printStackTrace(); </span><span class="s4">// Log or handle the exception appropriately</span>
+            <span class="s1">}</span>
+
+            <span class="s1">clearFields(); </span><span class="s4">// Ensure fields are cleared after the operation</span>
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+
+</pre>
+</body>
+</html>
