@@ -12,7 +12,7 @@ import java.util.Date;
 @ToString
 @Data
 public class Members {
-        int memberId;
+    int memberId;
     String name;
     String email;
     String phoneNumber;

@@ -17,5 +17,5 @@ public interface CrudDAO<T> extends SuperDAO {
 
     public  List<String> getTel() throws SQLException;
 
-    public  String getCurrentId() throws SQLException;
+    public int getCurrentId() throws SQLException;
 }

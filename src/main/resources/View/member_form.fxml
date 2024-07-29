@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="708.0" prefWidth="1195.0" style="-fx-background-color: #75E6DA;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.Controller.CustomerFormController">
+<AnchorPane fx:id="root" prefHeight="708.0" prefWidth="1195.0" style="-fx-background-color: #75E6DA;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.Controller.MemberFormController">
     <children>
         <Label layoutX="178.0" layoutY="20.0" text="Member Manage" textFill="#030f1b">
             <font>
@@ -69,9 +69,9 @@
                 <TableColumn fx:id="colEmail" prefWidth="193.0" text="Email" />
                 <TableColumn fx:id="colTel" prefWidth="174.0" text="Tel" />
                 <TableColumn fx:id="colAddress" prefWidth="149.0" text="Address" />
-            <TableColumn fx:id="colDateofBirth" prefWidth="149.0" text="Date of Birth" />
-            <TableColumn fx:id="colJoinDate" prefWidth="149.0" text="Join Date" />
-            <TableColumn fx:id="colType" prefWidth="156.0" text="Type" />
+                <TableColumn fx:id="colDateofBirth" prefWidth="149.0" text="Date of Birth" />
+                <TableColumn fx:id="colJoinDate" prefWidth="149.0" text="Join Date" />
+                <TableColumn fx:id="colType" prefWidth="156.0" text="Type" />
             </columns>
         </TableView>
         <JFXButton fx:id="btnClear" buttonType="RAISED" contentDisplay="RIGHT" layoutX="582.0" layoutY="271.0" onAction="#btnClearOnAction" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: #189AB4;" text="Clear" textFill="WHITE">
@@ -140,23 +140,23 @@
             </font>
         </Label>
         <TextField fx:id="txtId" layoutX="365.0" layoutY="86.0" prefHeight="33.0" prefWidth="230.0" promptText="Enter Member Id" />
-      <Label layoutX="672.0" layoutY="133.0" text="Date of Birth:" textFill="#363232">
-         <font>
-            <Font name="System Bold Italic" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="672.0" layoutY="185.0" text="Join Date:" textFill="#363232">
-         <font>
-            <Font name="System Bold Italic" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="668.0" layoutY="231.0" text="Membership Type:" textFill="#363232">
-         <font>
-            <Font name="System Bold Italic" size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtDateOfBirth" layoutX="865.0" layoutY="127.0" prefHeight="33.0" prefWidth="230.0" promptText="Enter Date of Birth" />
-      <TextField fx:id="txtJoinDate" layoutX="865.0" layoutY="179.0" prefHeight="33.0" prefWidth="230.0" promptText="Enter Join Date" />
-      <TextField fx:id="txtType" layoutX="865.0" layoutY="225.0" prefHeight="33.0" prefWidth="230.0" promptText="Enter Member Type" />
+        <Label layoutX="672.0" layoutY="133.0" text="Date of Birth:" textFill="#363232">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="672.0" layoutY="185.0" text="Join Date:" textFill="#363232">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="668.0" layoutY="231.0" text="Membership Type:" textFill="#363232">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtDateOfBirth" layoutX="865.0" layoutY="127.0" prefHeight="33.0" prefWidth="230.0" promptText="Enter Date of Birth" />
+        <TextField fx:id="txtType" layoutX="865.0" layoutY="225.0" prefHeight="33.0" prefWidth="230.0" promptText="Enter Member Type" />
+      <Label fx:id="lblJoinDate" layoutX="865.0" layoutY="179.0" prefHeight="33.0" prefWidth="230.0" text="Join Date" />
     </children>
 </AnchorPane>

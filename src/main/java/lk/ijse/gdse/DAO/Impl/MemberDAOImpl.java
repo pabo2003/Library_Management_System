@@ -12,7 +12,7 @@ import java.util.List;
 public class MemberDAOImpl implements MemberDAO {
     @Override
     public boolean save(Members members) throws SQLException {
-        return SQLUtil.execute("INSERT INTO members VALUES(?,?,?,?,?)",members.getMemberId(),members.getName(),members.getEmail(),members.getPhoneNumber(),members.getAddress(),members.getDateOfBirth(),members.getJoinDate(),members.getMembershipType());
+        return SQLUtil.execute("INSERT INTO members VALUES(?,?,?,?,?,?,?,?)",members.getMemberId(),members.getName(),members.getEmail(),members.getPhoneNumber(),members.getAddress(),members.getDateOfBirth(),members.getJoinDate(),members.getMembershipType());
     }
 
     @Override
@@ -21,14 +21,14 @@ public class MemberDAOImpl implements MemberDAO {
         ResultSet rst = SQLUtil.execute("SELECT*FROM members");
         while (rst.next()){
             Members member = new Members(
-                    rst.getInt("memberId"),
+                    rst.getInt("member_id"),
                     rst.getString("name"),
                     rst.getString("email"),
-                    rst.getString("phoneNumber"),
+                    rst.getString("phone_number"),
                     rst.getString("address"),
-                    rst.getDate("dateOfBirth"),
-                    rst.getDate("joinDate"),
-                    rst.getString("membershipType")
+                    rst.getDate("date_of_birth"),
+                    rst.getDate("join_date"),
+                    rst.getString("membership_type")
             );
             members.add(member);
         }
@@ -42,7 +42,16 @@ public class MemberDAOImpl implements MemberDAO {
 
     @Override
     public boolean update(Members members) throws SQLException {
-        return SQLUtil.execute("UPDATE members SET name = ? , email = ? , phone_number = ? , address = ?, date_of_birth = ?, join_date = ?, membership_type = ? WHERE member_id = ?",members.getName(),members.getEmail(),members.getPhoneNumber(),members.getAddress(),members.getDateOfBirth(),members.getJoinDate(),members.getMembershipType());
+        return SQLUtil.execute("UPDATE members SET name = ? , email = ? , phone_number = ? , address = ?, date_of_birth = ?, join_date = ?, membership_type = ? WHERE member_id = ?",
+                members.getName(),
+                members.getEmail(),
+                members.getPhoneNumber(),
+                members.getAddress(),
+                members.getDateOfBirth(),
+                members.getJoinDate(),
+                members.getMembershipType(),
+                members.getMemberId())
+                ;
     }
 
     @Override
@@ -66,12 +75,12 @@ public class MemberDAOImpl implements MemberDAO {
     }
 
     @Override
-    public String getCurrentId() throws SQLException {
+    public int getCurrentId() throws SQLException {
         ResultSet rst = SQLUtil.execute("SELECT member_id FROM members ORDER BY member_id DESC LIMIT 1");
         if(rst.next()) {
-            String memberId = rst.getString(1);
+            int memberId = rst.getInt(1);
             return memberId;
         }
-        return null;
+        return 0;
     }
 }

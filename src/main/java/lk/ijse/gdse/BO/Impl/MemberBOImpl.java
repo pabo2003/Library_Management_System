@@ -23,7 +23,15 @@ public class MemberBOImpl implements MemberBO {
         ArrayList<MembersDTO> allMembers= new ArrayList<>();
         ArrayList<Members> all = memberDAO.getAll();
         for (Members m : all) {
-            allMembers.add(new MembersDTO(m.getMemberId(),m.getName(),m.getEmail(),m.getPhoneNumber(),m.getAddress(), (Date) m.getDateOfBirth(), (Date) m.getJoinDate(),m.getMembershipType()));
+            allMembers.add(new MembersDTO(
+                    m.getMemberId(),
+                    m.getName(),
+                    m.getEmail(),
+                    m.getPhoneNumber(),
+                    m.getAddress(),
+                    (Date) m.getDateOfBirth(),
+                    (Date) m.getJoinDate(),
+                    m.getMembershipType()));
         }
         return allMembers;
     }
@@ -49,7 +57,7 @@ public class MemberBOImpl implements MemberBO {
     }
 
     @Override
-    public String getCurrentId() throws SQLException {
+    public int getCurrentId() throws SQLException {
         return memberDAO.getCurrentId();
     }
 }
