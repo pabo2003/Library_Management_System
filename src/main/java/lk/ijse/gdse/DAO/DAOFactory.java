@@ -9,15 +9,15 @@ public class DAOFactory implements SuperDAO {
         return (daoFactory == null) ? daoFactory = new DAOFactory() : daoFactory;
     }
     public enum DAOTypes{
-        MEMBER,EMPLOYEE,ITEM,ORDER,ORDER_DETAILS,PAYMENT,PLACE_ORDER,STOCK,SUPPLIER,SUPPLIER_DETAILS
+        MEMBER,BOOKS,BOOK_CATEGORIES,BORROWING_TRANSACTIONS
     }
     public SuperDAO getDAO(DAOTypes types) {
         switch (types) {
             case MEMBER:
                 return new MemberDAOImpl();
-            /*case EMPLOYEE:
-                return new EmployeeDAOImpl();
-            case ITEM:
+            case BOOKS:
+                return new BooksDAOImpl();
+            /*case ITEM:
                 return new ItemDAOImpl();
             case ORDER:
                 return new OrderDAOImpl();

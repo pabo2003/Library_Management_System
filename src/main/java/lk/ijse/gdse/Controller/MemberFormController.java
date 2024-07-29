@@ -238,7 +238,6 @@ public class MemberFormController {
         clearFields();
     }
     private void clearFields() {
-
         loadAllMembers();
         getCurrentMemberId();
         txtType.clear();

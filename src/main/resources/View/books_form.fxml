@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="698.0" prefWidth="1108.0" style="-fx-background-color: #75E6DA;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.Controller.booksFormController">
+    <children>
+        <Label layoutX="199.0" layoutY="29.0" text="Books Manage">
+            <font>
+                <Font name="System Bold Italic" size="36.0" />
+            </font>
+        </Label>
+        <TextField fx:id="txtId" layoutX="322.0" layoutY="79.0" onKeyReleased="#txtItemIDOnKeyReleased" prefHeight="35.0" prefWidth="245.0" promptText="Enter Book Id" />
+        <Label layoutX="199.0" layoutY="86.0" text="Book Id:">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font></Label>
+        <Label layoutX="690.0" layoutY="134.0" text="Shelf Location:">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font></Label>
+        <TextField fx:id="txtTitel" layoutX="322.0" layoutY="127.0" prefHeight="35.0" prefWidth="245.0" promptText="Enter Book Titel" />
+        <TextField fx:id="txtShelfLocation" layoutX="861.0" layoutY="127.0" onKeyReleased="#txtItemUnitPriceOnKeyReleased" prefHeight="35.0" prefWidth="245.0" promptText="Enter Shelf Lacation" />
+        <TextField fx:id="txtEdition" layoutX="322.0" layoutY="173.0" prefHeight="35.0" prefWidth="245.0" promptText="Enter Edition" />
+        <TableView fx:id="tblBooks" layoutX="172.0" layoutY="267.0" prefHeight="432.0" prefWidth="988.0">
+            <columns>
+                <TableColumn fx:id="colId" prefWidth="81.0" text="Id" />
+                <TableColumn fx:id="colTitle" prefWidth="165.0" text="Title" />
+                <TableColumn fx:id="colEdition" prefWidth="155.0" text="Edition" />
+                <TableColumn fx:id="colLanguage" prefWidth="177.0" text="Language" />
+                <TableColumn fx:id="colAvailable" prefWidth="132.0" text="Available Copies " />
+            <TableColumn fx:id="colShelfLocation" prefWidth="137.0" text="Shelf Location" />
+            <TableColumn fx:id="colCategoryId" prefWidth="140.0" text="Category Id" />
+            </columns>
+        </TableView>
+        <ComboBox fx:id="comCategoryId" layoutX="861.0" layoutY="176.0" onAction="#comCategoryIdOnAction" prefHeight="29.0" prefWidth="207.0" promptText="Select Category id" />
+        <Label layoutX="690.0" layoutY="180.0" text="Category Id:">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Label>
+        <JFXButton fx:id="btnSave" layoutX="3.0" layoutY="343.0" onAction="#btnSaveOnAction" prefHeight="35.0" prefWidth="161.0" style="-fx-background-color: #189AB4 #189AB4;" text="Save" textFill="#f2eeee">
+            <graphic>
+                <ImageView fitHeight="21.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../asserts.icon/save.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font></JFXButton>
+        <JFXButton fx:id="btnUpdate" layoutX="4.0" layoutY="414.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="161.0" style="-fx-background-color: #189AB4;" text="Update" textFill="#fcf7f7">
+            <graphic>
+                <ImageView fitHeight="21.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../asserts.icon/update.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font></JFXButton>
+        <JFXButton fx:id="btnDelete" layoutX="4.0" layoutY="485.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="161.0" style="-fx-background-color: #189AB4;" text="Delete" textFill="#f2ebeb">
+            <graphic>
+                <ImageView fitHeight="21.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../asserts.icon/Delete.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font></JFXButton>
+        <JFXButton fx:id="btnClear" layoutX="4.0" layoutY="551.0" onAction="#btnClearOnAction" prefHeight="35.0" prefWidth="161.0" style="-fx-background-color: #189AB4;" text="Clear" textFill="#fcfafa">
+            <graphic>
+                <ImageView fitHeight="21.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../asserts.icon/clean.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font></JFXButton>
+        <JFXButton fx:id="btnDashboard" layoutX="3.0" layoutY="622.0" onAction="#btnDashboardOnAction" prefHeight="35.0" prefWidth="161.0" style="-fx-background-color: #189AB4;" text="Dashboard" textFill="#fcfafa">
+            <graphic>
+                <ImageView fitHeight="21.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../asserts.icon/dashboard.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font></JFXButton>
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="20.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../asserts.icon/Item.png" />
+            </image>
+        </ImageView>
+      <Label layoutX="199.0" layoutY="134.0" text="Title:">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="199.0" layoutY="180.0" text="Edition:">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="195.0" layoutY="235.0" text="Language:">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="690.0" layoutY="86.0" text="Available Copies:">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtLanguage" layoutX="322.0" layoutY="228.0" prefHeight="35.0" prefWidth="245.0" promptText="Enter Language" />
+      <TextField fx:id="txtAvailableCopies" layoutX="865.0" layoutY="79.0" prefHeight="35.0" prefWidth="245.0" promptText="Enter Available Copies" />
+    </children>
+</AnchorPane>
