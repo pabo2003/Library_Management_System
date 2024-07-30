@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="698.0" prefWidth="1108.0" style="-fx-background-color: #75E6DA;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.Controller.BorrowingTransactionsFormController">
+    <children>
+        <Label layoutX="100.0" layoutY="14.0" text="Borrowing Transaction" textFill="#0d1925">
+            <font>
+                <Font name="System Bold Italic" size="36.0" />
+            </font>
+        </Label>
+        <Label layoutX="33.0" layoutY="142.0" text="Member Tel:" textFill="#363232">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="743.0" layoutY="143.0" text="Member Name:" textFill="#363232">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="808.0" layoutY="18.0" text="Borrow Date:" textFill="#363232">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="58.0" fitWidth="64.0" layoutX="32.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../asserts.icon/plase_order.png" />
+            </image>
+        </ImageView>
+        <TableView fx:id="tblBorrowDetails" layoutX="39.0" layoutY="257.0" prefHeight="316.0" prefWidth="1024.0" style="-fx-background-color: #D4F1F4;">
+            <columns>
+                <TableColumn fx:id="colBorrowId" prefWidth="116.0" text="Borrow Id" />
+                <TableColumn fx:id="colBookId" prefWidth="124.0" text="Book Id" />
+                <TableColumn fx:id="colBookName" prefWidth="151.0" text="Book Name" />
+                <TableColumn fx:id="colMemberId" prefWidth="124.0" text="Member Id" />
+                <TableColumn fx:id="colMemberName" prefWidth="200.0" text="Member Name" />
+                <TableColumn fx:id="colBorrowDate" prefWidth="153.0" text="Borrow Date" />
+            <TableColumn fx:id="colDueDate" prefWidth="153.0" text="Due Date" />
+            </columns>
+        </TableView>
+        <JFXButton fx:id="btnDashboard" buttonType="RAISED" contentDisplay="RIGHT" layoutX="463.0" layoutY="651.0" onAction="#btnDashBoardOnAction" prefHeight="33.0" prefWidth="150.0" style="-fx-background-color: #189AB4;" text="Dashboard" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <graphic>
+                <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../asserts.icon/dashboard.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <Label fx:id="lblBorrowDate" layoutX="955.0" layoutY="18.0" prefHeight="21.0" prefWidth="139.0" />
+        <ComboBox fx:id="comMemberTel" layoutX="165.0" layoutY="140.0" onAction="#comMemberTelOnAction" prefHeight="21.0" prefWidth="180.0" promptText="Select Member tel" style="-fx-background-color: transparent; -fx-border-color: #122620; -fx-border-width: 0px 0px 2px 0px;" />
+        <JFXButton fx:id="btnAddToCart" buttonType="RAISED" contentDisplay="RIGHT" layoutX="265.0" layoutY="651.0" onAction="#btnAddToCartOnAction" prefHeight="33.0" prefWidth="150.0" style="-fx-background-color: #189AB4;" text="Add " textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </JFXButton>
+        <JFXButton fx:id="btnAddCustomer" buttonType="RAISED" contentDisplay="RIGHT" layoutX="362.0" layoutY="138.0" onAction="#btnAddCustomerOnAction" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #189AB4;" text="Add " textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </JFXButton>
+        <Label fx:id="lblMemberName" layoutX="918.0" layoutY="142.0" prefHeight="21.0" prefWidth="180.0" />
+        <JFXButton fx:id="btnClear" buttonType="RAISED" contentDisplay="RIGHT" layoutX="58.0" layoutY="651.0" onAction="#btnClearOnAction" prefHeight="33.0" prefWidth="150.0" style="-fx-background-color: #189AB4;" text="Clear" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <graphic>
+                <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../asserts.icon/clean.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <Label layoutX="32.0" layoutY="179.0" text="Book Id:" textFill="#363232">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Label>
+        <ComboBox fx:id="comBookId" layoutX="165.0" layoutY="177.0" onAction="#comBookIdOnAction" prefHeight="21.0" prefWidth="180.0" promptText="Select Book Id" style="-fx-background-color: transparent; -fx-border-color: #122620; -fx-border-width: 0px 0px 2px 0px;" />
+        <JFXButton fx:id="btnAddEmployee" buttonType="RAISED" contentDisplay="RIGHT" layoutX="362.0" layoutY="175.0" onAction="#btnAddEmployeeOnAction" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #189AB4;" text="Add " textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </JFXButton>
+        <Label layoutX="463.0" layoutY="180.0" text="Book Name:" textFill="#363232">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="lblBookName" layoutX="594.0" layoutY="180.0" prefHeight="21.0" prefWidth="171.0" />
+        <Label layoutX="32.0" layoutY="86.0" text="Borrow Id:" textFill="#363232">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="lblPayId" layoutX="144.0" layoutY="86.0" prefHeight="21.0" prefWidth="82.0" />
+        <Label layoutX="590.0" layoutY="75.0" text="Amont:" textFill="#363232">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="lblAmount" layoutX="667.0" layoutY="75.0" prefHeight="21.0" prefWidth="106.0" />
+        <Label layoutX="463.0" layoutY="142.0" text="Member Id:" textFill="#363232">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="lblMemberId" layoutX="595.0" layoutY="143.0" prefHeight="21.0" prefWidth="132.0" />
+      <Label layoutX="800.0" layoutY="65.0" text="Due Date:" textFill="#363232">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDueDate" layoutX="903.0" layoutY="65.0" prefHeight="21.0" prefWidth="139.0" />
+    </children>
+</AnchorPane>

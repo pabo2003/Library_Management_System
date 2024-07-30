@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootNode" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.Controller.DashboardFormController">
+    <children>
+        <ImageView fitHeight="835.0" fitWidth="1412.0" layoutX="-112.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../asserts.icon/OrderPlasmentBackground.png" />
+            </image>
+        </ImageView>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#189ab4" height="800.0" layoutX="-4.0" opacity="0.82" stroke="BLACK" strokeType="INSIDE" width="196.0" />
+        <Text fill="#d9dbee" layoutX="558.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DashBoard">
+            <font>
+                <Font name="System Bold Italic" size="36.0" />
+            </font>
+        </Text>
+        <AnchorPane fx:id="SpecialPane" layoutX="191.0" layoutY="101.0" prefHeight="698.0" prefWidth="1108.0" style="-fx-background-color: #75E6DA;">
+            <children>
+                <ImageView fitHeight="698.0" fitWidth="1108.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../asserts.icon/RegistrationBackground.png" />
+                    </image>
+                </ImageView>
+              <JFXButton fx:id="btnMembers" layoutX="115.0" layoutY="141.0" mnemonicParsing="false" onAction="#btnMembersOnAction" prefHeight="110.0" prefWidth="417.0" style="-fx-background-color: #189AB4;" text="Manage Members" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold Italic" size="26.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnBorrowing" layoutX="582.0" layoutY="342.0" mnemonicParsing="false" onAction="#btnBorrowingOnAction" prefHeight="110.0" prefWidth="417.0" style="-fx-background-color: #189AB4;" text="Manage Borrowing" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold Italic" size="26.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnBookCategories" layoutX="115.0" layoutY="342.0" mnemonicParsing="false" onAction="#btnBookCategoriesOnAction" prefHeight="110.0" prefWidth="417.0" style="-fx-background-color: #189AB4;" text="Manage Book Categories" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold Italic" size="26.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnBooks" layoutX="582.0" layoutY="141.0" mnemonicParsing="false" onAction="#btnBooksOnAction" prefHeight="110.0" prefWidth="417.0" style="-fx-background-color: #189AB4;" text="Manage Books" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold Italic" size="26.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnReturnDetails" layoutX="374.0" layoutY="503.0" mnemonicParsing="false" onAction="#btnReturnDetailsOnAction" prefHeight="110.0" prefWidth="417.0" style="-fx-background-color: #189AB4;" text="Manage Return Details" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold Italic" size="26.0" />
+               </font>
+            </JFXButton>
+            </children></AnchorPane>
+    </children>
+</AnchorPane>
