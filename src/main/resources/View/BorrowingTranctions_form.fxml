@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="root" prefHeight="698.0" prefWidth="1108.0" style="-fx-background-color: #75E6DA;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.Controller.BorrowingTransactionsFormController">
+<AnchorPane fx:id="root" prefHeight="698.0" prefWidth="1108.0" style="-fx-background-color: #75E6DA;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.Controller.BorrowingTransactionsFormController">
     <children>
         <Label layoutX="100.0" layoutY="14.0" text="Borrowing Transaction" textFill="#0d1925">
             <font>
@@ -46,7 +42,7 @@
                 <TableColumn fx:id="colMemberId" prefWidth="124.0" text="Member Id" />
                 <TableColumn fx:id="colMemberName" prefWidth="200.0" text="Member Name" />
                 <TableColumn fx:id="colBorrowDate" prefWidth="153.0" text="Borrow Date" />
-            <TableColumn fx:id="colDueDate" prefWidth="153.0" text="Due Date" />
+                <TableColumn fx:id="colDueDate" prefWidth="153.0" text="Due Date" />
             </columns>
         </TableView>
         <JFXButton fx:id="btnDashboard" buttonType="RAISED" contentDisplay="RIGHT" layoutX="463.0" layoutY="651.0" onAction="#btnDashBoardOnAction" prefHeight="33.0" prefWidth="150.0" style="-fx-background-color: #189AB4;" text="Dashboard" textFill="WHITE">
@@ -104,7 +100,7 @@
             </font>
         </Label>
         <ComboBox fx:id="comBookId" layoutX="165.0" layoutY="177.0" onAction="#comBookIdOnAction" prefHeight="21.0" prefWidth="180.0" promptText="Select Book Id" style="-fx-background-color: transparent; -fx-border-color: #122620; -fx-border-width: 0px 0px 2px 0px;" />
-        <JFXButton fx:id="btnAddEmployee" buttonType="RAISED" contentDisplay="RIGHT" layoutX="362.0" layoutY="175.0" onAction="#btnAddEmployeeOnAction" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #189AB4;" text="Add " textFill="WHITE">
+        <JFXButton fx:id="btnAddBook" buttonType="RAISED" contentDisplay="RIGHT" layoutX="362.0" layoutY="175.0" onAction="#btnAddBookOnAction" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #189AB4;" text="Add " textFill="WHITE">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
@@ -136,11 +132,11 @@
             </font>
         </Label>
         <Label fx:id="lblMemberId" layoutX="595.0" layoutY="143.0" prefHeight="21.0" prefWidth="132.0" />
-      <Label layoutX="800.0" layoutY="65.0" text="Due Date:" textFill="#363232">
-         <font>
-            <Font name="System Bold Italic" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblDueDate" layoutX="903.0" layoutY="65.0" prefHeight="21.0" prefWidth="139.0" />
+        <Label layoutX="800.0" layoutY="65.0" text="Due Date:" textFill="#363232">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="lblDueDate" layoutX="903.0" layoutY="65.0" prefHeight="21.0" prefWidth="139.0" />
     </children>
 </AnchorPane>

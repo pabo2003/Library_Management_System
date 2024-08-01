@@ -15,6 +15,7 @@ import java.io.IOException;
 
 public class DashboardFormController {
 
+    public JFXButton btnReturnDetails;
     @FXML
     private AnchorPane SpecialPane;
 
@@ -59,7 +60,7 @@ public class DashboardFormController {
     @FXML
     void btnBookCategoriesOnAction(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/View/BookCategory_form.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/BookCategory_form.fxml"));
             Parent root = loader.load();
             SpecialPane.getChildren().clear();
             SpecialPane.getChildren().add(root);
@@ -71,7 +72,7 @@ public class DashboardFormController {
     @FXML
     void btnBooksOnAction(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/View/books_form.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/books_form.fxml"));
             Parent root = loader.load();
             SpecialPane.getChildren().clear();
             SpecialPane.getChildren().add(root);
@@ -83,7 +84,7 @@ public class DashboardFormController {
     @FXML
     void btnBorrowingOnAction(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/View/BorrowingTranctions_form.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/BorrowingTranctions_form.fxml"));
             Parent root = loader.load();
             SpecialPane.getChildren().clear();
             SpecialPane.getChildren().add(root);
@@ -95,7 +96,7 @@ public class DashboardFormController {
     @FXML
     void btnMembersOnAction(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/View/member_form.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/member_form.fxml"));
             Parent root = loader.load();
             SpecialPane.getChildren().clear();
             SpecialPane.getChildren().add(root);
@@ -106,7 +107,7 @@ public class DashboardFormController {
 
     public void btnReturnDetailsOnAction(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/View/ReturnDetails_form.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/ReturnDetails_form.fxml"));
             Parent root = loader.load();
             SpecialPane.getChildren().clear();
             SpecialPane.getChildren().add(root);

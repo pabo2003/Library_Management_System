@@ -250,7 +250,7 @@ public class MemberFormController {
     @FXML
     void btnDashBoardOnAction(ActionEvent event) {
         try {
-            AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/resources/view/dashboard_form.fxml"));
+            AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/View/DashBoard_form.fxml"));
             Stage stage = (Stage) root.getScene().getWindow();
             stage.setScene(new Scene(rootNode));
             stage.setTitle("Dashboard Form");

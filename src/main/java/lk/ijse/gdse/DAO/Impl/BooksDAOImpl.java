@@ -48,17 +48,27 @@ public class BooksDAOImpl implements BooksDAO {
                 books.getLanguage(),
                 books.getAvailable_copies(),
                 books.getShelf_location(),
-                books.getCategory_id()
-                )
+                books.getCategory_id(),
+                books.getBook_id()
+        )
                 ;
     }
 
     @Override
     public Books searchByTel(String id) throws SQLException {
-        ResultSet rst = SQLUtil.execute("SELECT * FROM books WHERE book_id = ?",id +"");
-        rst.next();
-        return new Books(rst.getInt(1),rst.getString(2),rst.getString(3),rst.getString(4),rst.getInt(5),rst.getString(6),rst.getInt(7));
+        ResultSet rst = SQLUtil.execute("SELECT * FROM books WHERE book_id = ?",id);
+        if (rst.next()){
+            int book_id = rst.getInt("book_id");
+            String title = rst.getString("title");
+            String edition = rst.getString("edition");
+            String language = rst.getString("language");
+            int available_copies = rst.getInt("available_copies");
+            String shelf_location = rst.getString("shelf_location");
+            int category_id = rst.getInt("category_id");
+            return new Books(book_id,title,edition,language,available_copies,shelf_location,category_id);
 
+        }
+        return null;
     }
 
     @Override
@@ -68,7 +78,7 @@ public class BooksDAOImpl implements BooksDAO {
         try (ResultSet rst = SQLUtil.execute("SELECT book_id FROM books")) {
             while (rst.next()) {
                 String tel = rst.getString("book_id");
-                idList.add(tel);
+                idList.add(String.valueOf(Integer.valueOf(tel)));
             }
         }
         return idList;
@@ -82,5 +92,12 @@ public class BooksDAOImpl implements BooksDAO {
             return bookId;
         }
         return 0;
+    }
+
+    @Override
+    public boolean UpdateBooks(int id) throws SQLException {
+        return SQLUtil.execute("UPDATE books\n" +
+                "SET available_copies = available_copies - 1\n" +
+                "WHERE book_id = ? AND available_copies > 0;\n",id);
     }
 }

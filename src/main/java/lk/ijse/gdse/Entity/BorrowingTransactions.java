@@ -17,5 +17,5 @@ public class BorrowingTransactions {
     int member_id;
     Date borrow_date;
     Date due_date;
-    Date return_date;
+//    Date return_date;
 }

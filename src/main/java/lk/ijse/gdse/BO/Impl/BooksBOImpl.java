@@ -30,7 +30,7 @@ public class BooksBOImpl implements BooksBO {
                     b.getAvailable_copies(),
                     b.getShelf_location(),
                     b.getCategory_id()
-                    ));
+            ));
         }
         return allBooks;
     }
@@ -58,6 +58,11 @@ public class BooksBOImpl implements BooksBO {
     @Override
     public int getCurrentId() throws SQLException {
         return booksDAO.getCurrentId();
+    }
+
+    @Override
+    public boolean UpdateBooks(int id) throws SQLException {
+        return booksDAO.UpdateBooks(id);
     }
 }
 

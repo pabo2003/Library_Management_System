@@ -219,15 +219,15 @@ public class booksFormController {
 
     @FXML
     void btnDashboardOnAction(ActionEvent event) {
-        /*try {
-            AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/resources/view/dashboard_form.fxml"));
+        try {
+            AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/resources/View/DashBoard_form.fxml"));
             Stage stage = (Stage) root.getScene().getWindow();
             stage.setScene(new Scene(rootNode));
             stage.setTitle("Dashboard Form");
             stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     @FXML
